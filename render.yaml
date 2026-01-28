@@ -11,5 +11,6 @@ services:
       - key: ALLOWED_HOSTS
         value: "*.onrender.com"
       - key: PYTHON_VERSION
-        value: "3.11"
+        value: "3.11.4"
+
 
