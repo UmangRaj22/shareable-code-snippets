@@ -13,6 +13,12 @@ def create_code_image(code, lang, theme, line_numbers, font_name, mac_buttons, b
         lexer = guess_lexer(code)
 
     # 2. Formatter
+    try:
+        if font_name:
+            ImageFont.truetype(font_name, 24)
+    except Exception:
+        font_name = None
+        
     formatter = ImageFormatter(
         style=theme,
         line_numbers=line_numbers,
@@ -95,4 +101,5 @@ def create_code_image(code, lang, theme, line_numbers, font_name, mac_buttons, b
     output = io.BytesIO()
     canvas.save(output, format='PNG')
     output.seek(0)
+
     return output
