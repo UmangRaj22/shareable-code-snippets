@@ -4,7 +4,7 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: cd CODESHOT && gunicorn CODESHOT.wsgi:application --bind 0.0.0.0:$PORT
+    startCommand: gunicorn code_shot.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: DEBUG
         value: "False"
@@ -12,6 +12,7 @@ services:
         value: "*.onrender.com"
       - key: PYTHON_VERSION
         value: "3.11.4"
+
 
 
 
