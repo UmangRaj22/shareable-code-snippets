@@ -18,15 +18,18 @@ def create_code_image(code, lang, theme, line_numbers, font_name, mac_buttons, b
             ImageFont.truetype(font_name, 24)
     except Exception:
         font_name = None
-        
-    formatter = ImageFormatter(
-        style=theme,
-        line_numbers=line_numbers,
-        font_name=font_name if font_name else None,
-        font_size=24,
-        line_pad=12,
-        line_number_bg=None,
-    )
+
+    formatter_kwargs = {
+        'style': theme,
+        'line_numbers': line_numbers,
+        'font_size': 24,
+        'line_pad': 12,
+        'line_number_bg': None,
+    }
+    if font_name:
+        formatter_kwargs['font_name'] = font_name
+
+    formatter = ImageFormatter(**formatter_kwargs)
     
     code_img_data = highlight(code, lexer, formatter)
     code_img = Image.open(io.BytesIO(code_img_data)).convert("RGBA")
@@ -103,3 +106,4 @@ def create_code_image(code, lang, theme, line_numbers, font_name, mac_buttons, b
     output.seek(0)
 
     return output
+
