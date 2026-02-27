@@ -146,4 +146,3 @@ For issues, questions, or suggestions, please open an issue on the GitHub reposi
 
 ---
 
-**⚠️ Note**: This is a development version. For production use, ensure all security settings are properly configured.
